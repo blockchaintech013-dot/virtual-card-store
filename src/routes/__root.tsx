@@ -104,8 +104,11 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/* Telegram Web Apps SDK — provides window.Telegram.WebApp inside Telegram */}
+        <script src="https://telegram.org/js/telegram-web-app.js" />
         <HeadContent />
       </head>
+
       <body>
         {children}
         <Scripts />
