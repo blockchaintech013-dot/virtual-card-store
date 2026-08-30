@@ -157,3 +157,18 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .bg-hero { background-image: var(--gradient-hero); }
+  .bg-card-gradient { background-image: var(--gradient-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+}
+
+@layer base {
+  html { color-scheme: dark; }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
