@@ -208,7 +208,7 @@ export async function issueCardToken(holder: string, months: number): Promise<Is
 }
 
 /** Lightweight analytics buffer, export-ready for the bot. */
-export type AnalyticsEvent = { name: string; ts: number; props?: Record<string, unknown> };
+export type AnalyticsEvent = { name: string; ts: number; props?: Record<string, unknown> | undefined };
 const events: AnalyticsEvent[] = [];
 export function track(name: string, props?: Record<string, unknown>) {
   events.push({ name, ts: Date.now(), props });

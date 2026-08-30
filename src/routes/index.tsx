@@ -107,9 +107,9 @@ function MiniApp() {
     track("app_open", { mock: u.mock });
     fetchCatalog().then((r) => setCatalog(r.items));
     fetchUserSettings(u.id).then((r) => {
-      if (r.prefs.lang) setLang(r.prefs.lang as Lang);
-      if (r.prefs.contrast === "1") setHighContrast(true);
-      if (!r.prefs.seenTour) setShowTour(true);
+      if (r.prefs['lang']) setLang(r.prefs['lang'] as Lang);
+      if (r.prefs['contrast'] === "1") setHighContrast(true);
+      if (!r.prefs['seenTour']) setShowTour(true);
     });
     if (u.mock) toast.info(t(detectLang(u.language_code), "offline"));
   }, []);
@@ -371,7 +371,7 @@ function MiniApp() {
                 max={40}
                 step={1}
                 value={[maxPrice]}
-                onValueChange={([v]) => setMaxPrice(v)}
+                onValueChange={([v]) => setMaxPrice(v ?? 5)}
               />
             </div>
           </div>
@@ -500,7 +500,7 @@ function MiniApp() {
                           max={c.limit}
                           step={50}
                           value={[l.limit]}
-                          onValueChange={([v]) => setLine(l.cardId, { limit: v })}
+                          onValueChange={([v]) => setLine(l.cardId, { limit: v ?? 50 })}
                         />
                         {l.limit > c.limit && (
                           <p className="text-xs text-destructive">Limit exceeds plan maximum.</p>
